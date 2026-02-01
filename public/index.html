@@ -28,11 +28,33 @@
             <input name="endTime" type="datetime-local" required />
           </label>
           <label>Varaaja (bookedBy)
-            <input name="bookedBy" value="session-abc-123" required />
+            <input name="bookedBy" value="session-abc-123" required readonly />
           </label>
           <button type="submit">Varaa</button>
         </form>
         <div id="create-result" class="info"></div>
+      </section>
+
+      <section id="edit" hidden>
+        <h2>Muokkaa varausta</h2>
+        <form id="edit-form">
+          <input type="hidden" name="bookingId" />
+          <label>Huone (roomId)
+            <input name="roomId" required disabled />
+          </label>
+          <label>Alkaa (ISO)
+            <input name="startTime" type="datetime-local" required />
+          </label>
+          <label>Päättyy (ISO)
+            <input name="endTime" type="datetime-local" required />
+          </label>
+          <label>Varaaja (bookedBy)
+            <input name="bookedBy" required readonly />
+          </label>
+          <button type="submit">Tallenna muutokset</button>
+          <button type="button" id="edit-cancel">Peruuta</button>
+        </form>
+        <div id="edit-result" class="info"></div>
       </section>
 
       <section id="list">
