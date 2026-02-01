@@ -13,14 +13,24 @@ app.use('/', bookingRoutes);
 app.use('/', roomRoutes);
 
 // Luo oletushuoneet käynnistyksessä (jos eivät vielä ole olemassa)
-const roomService = new RoomService();
-const defaultRooms = ['A101', 'A102', 'B201', 'B202'];
-for (const r of defaultRooms) {
-  try {
-    roomService.createRoom(r);
-  } catch (err) {
-    // jos jo olemassa tai muu business-virhe, ohitetaan
+try {
+  const roomService = new RoomService();
+  const defaultRooms = ['A101', 'A102', 'B201', 'B202'];
+  for (const r of defaultRooms) {
+    try {
+      roomService.createRoom(r);
+      // eslint-disable-next-line no-console
+      console.log(`Created room: ${r}`);
+    } catch (err: any) {
+      // jos jo olemassa tai muu business-virhe, ohitetaan
+      // eslint-disable-next-line no-console
+      console.log(`Room ${r} already exists or error: ${err?.message}`);
+    }
   }
+} catch (err: any) {
+  // eslint-disable-next-line no-console
+  console.error('Error initializing rooms:', err);
+  process.exit(1);
 }
 
 const PORT = process.env.PORT || 3000;

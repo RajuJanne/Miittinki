@@ -1,10 +1,10 @@
 import { Room } from '../models/room.model.ts';
-import { RoomRepository } from '../repositories/room.repository.ts';
+import { sharedRoomRepository } from '../repositories/shared.repository.ts';
 import { v4 as uuidv4 } from 'uuid';
 import { BusinessError } from '../errors/business-error.ts';
 
 export class RoomService {
-  constructor(private repo = new RoomRepository()) {}
+  constructor(private repo = sharedRoomRepository) {}
 
   createRoom(name: string): Room {
     if (!name || !name.trim()) throw new BusinessError('Room name required', 400);

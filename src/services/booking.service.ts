@@ -1,5 +1,5 @@
 import { Booking } from '../models/booking.model.ts';
-import { BookingRepository } from '../repositories/booking.repository.ts';
+import { sharedBookingRepository } from '../repositories/shared.repository.ts';
 import { CreateBookingDto } from '../dtos/create-booking.dto.ts';
 import { UpdateBookingDto } from '../dtos/update-booking.dto.ts';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,7 +7,7 @@ import { parseIsoToDate, isStartBeforeEnd, isInPast, overlaps } from '../utils/t
 import { BusinessError } from '../errors/business-error.ts';
 
 export class BookingService {
-  constructor(private repo = new BookingRepository()) {}
+  constructor(private repo = sharedBookingRepository) {}
 
   createBooking(dto: CreateBookingDto): Booking {
     const start = parseIsoToDate(dto.startTime);
