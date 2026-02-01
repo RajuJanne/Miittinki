@@ -10,6 +10,11 @@
     <main>
       <h1>Miittinki — Ajanvaraus</h1>
 
+      <section id="rooms">
+        <h2>Valitse huone</h2>
+        <div id="rooms-list" class="room-buttons"></div>
+      </section>
+
       <section id="create">
         <h2>Luo varaus</h2>
         <form id="create-form">
@@ -30,16 +35,9 @@
         <div id="create-result" class="info"></div>
       </section>
 
-      <section id="rooms">
-        <h2>Huoneet</h2>
-        <ul id="rooms-list"></ul>
-      </section>
-
       <section id="list">
-        <h2>Huoneen varaukset</h2>
-        <label>Huone
-          <input id="list-room" value="A101" />
-        </label>
+        <h2 id="selected-room-title">Huoneen varaukset</h2>
+        <input id="list-room" value="A101" hidden />
         <button id="refresh">Päivitä</button>
         <ul id="bookings"></ul>
       </section>

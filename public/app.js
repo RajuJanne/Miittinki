@@ -101,24 +101,31 @@ document.getElementById('refresh').addEventListener('click', async () => {
 });
 
 async function renderRooms() {
-  const ul = document.getElementById('rooms-list');
-  ul.innerHTML = 'Ladataan...';
+  const container = document.getElementById('rooms-list');
+  container.innerHTML = 'Ladataan...';
   const rooms = await fetchRooms();
-  ul.innerHTML = '';
+  container.innerHTML = '';
   if (!rooms || !rooms.length) {
-    ul.innerHTML = '<li>Ei huoneita</li>';
+    container.innerHTML = '<p>Ei huoneita saatavilla</p>';
     return;
   }
   for (const r of rooms) {
-    const li = document.createElement('li');
     const btn = document.createElement('button');
+    btn.classList.add('room-btn');
     btn.textContent = r.name;
     btn.addEventListener('click', () => {
+      // Poista active-luokka kaikista nappuloista
+      document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
+      // Lisää active-luokka klikatulle nappulalle
+      btn.classList.add('active');
+      // Päivitä varausten näyttö
       document.getElementById('list-room').value = r.name;
+      document.getElementById('selected-room-title').textContent = `Huoneen "${r.name}" varaukset`;
+      // Päivitä varauksen luonnin roomId-kenttä
+      document.querySelector('#create-form input[name="roomId"]').value = r.name;
       document.getElementById('refresh').click();
     });
-    li.appendChild(btn);
-    ul.appendChild(li);
+    container.appendChild(btn);
   }
 }
 
