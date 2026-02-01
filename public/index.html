@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Miittinki — Ajanvaraus</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>Miittinki — Ajanvaraus</h1>
+
+      <section id="create">
+        <h2>Luo varaus</h2>
+        <form id="create-form">
+          <label>Huone (roomId)
+            <input name="roomId" value="A101" required />
+          </label>
+          <label>Alkaa (ISO)
+            <input name="startTime" type="datetime-local" required />
+          </label>
+          <label>Päättyy (ISO)
+            <input name="endTime" type="datetime-local" required />
+          </label>
+          <label>Varaaja (bookedBy)
+            <input name="bookedBy" value="session-abc-123" required />
+          </label>
+          <button type="submit">Varaa</button>
+        </form>
+        <div id="create-result" class="info"></div>
+      </section>
+
+      <section id="rooms">
+        <h2>Huoneet</h2>
+        <ul id="rooms-list"></ul>
+      </section>
+
+      <section id="list">
+        <h2>Huoneen varaukset</h2>
+        <label>Huone
+          <input id="list-room" value="A101" />
+        </label>
+        <button id="refresh">Päivitä</button>
+        <ul id="bookings"></ul>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

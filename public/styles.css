@@ -1,0 +1,8 @@
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:20px}
+main{max-width:760px}
+label{display:block;margin:6px 0}
+input{padding:6px;margin-left:8px}
+button{margin-top:8px;padding:6px 10px}
+.info{margin-top:8px;color:#223}
+ul{list-style:none;padding-left:0}
+li{padding:6px 0;border-bottom:1px solid #eee}
