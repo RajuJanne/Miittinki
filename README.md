@@ -24,6 +24,44 @@ Palvelin käynnistyy oletuksena osoitteeseen `http://localhost:3000`.
 - Kehitys: `npm run dev`
 - Käännä: `npm run build`
 - Käynnistä tuotannossa: `npm start`
+- Suorita testit: `npm test`
+
+---
+
+**Testit**
+
+Projekti sisältää kattavat yksikkötestit, jotka varmistavat ohjelman toimivuuden:
+
+```bash
+npm test
+```
+
+Testit kattavat seuraavat osa-alueet:
+
+**BookingService** (27 testiä)
+- ✓ Varauksen luonti (onnistuneet varaukset, validoinnit)
+- ✓ Varauksen peruutus (olemassa oleva varaus, omistajuustarkistus)
+- ✓ Varausten haku huoneen perusteella (tyhjä lista, useita varauksia)
+- ✓ Varauksen muokkaaminen (onnistuneet muutokset, päällekkäisyyksien esto)
+- ✓ Liiketoimintalogiikka:
+  - Varaukset eivät voi olla menneisyydessä
+  - Aloitusaika täytyy olla ennen lopetusaikaa
+  - Varaukset eivät saa mennä päällekkäin
+  - Eri huoneet voivat olla varattuja samalla ajalla
+  - Omistajuustarkistus varauksen poistossa ja muokkauksessa
+
+**TimeUtils** (11 testiä)
+- ✓ ISO-päivämäärän jäsentäminen
+- ✓ Aikavälin validoinnit (aloitus ennen lopetusta)
+- ✓ Menneisyyden tarkistus
+- ✓ Päällekkäisyyden havaitseminen (eri skenaarioita)
+
+**BookingRepository** (5 testiä)
+- ✓ Varausten tallennus ja haku
+- ✓ Varausten päivitys ja poistaminen
+- ✓ Huoneen varausten listaus
+
+**Testien tulokset**: 43 testiä menevät läpi (3 test suites)
 
 ---
 
@@ -90,8 +128,8 @@ Palvelin käynnistyy oletuksena osoitteeseen `http://localhost:3000`.
 
 Kehitysehdotuksia / seuraavat askeleet:
 - Lisää pyyntövalidointi (esim. `express-validator`)
-- Lisää yksikkö- ja integraatiotestit
 - Vaihda muistivarastosta pysyvään tietokantaan tarpeen mukaan
+- Lisää integraatiotestit API-päätepisteiden testaamiseen
 
 Lisätietoja ja koodin sijainti: katso `src/`-hakemisto.
 
